@@ -55,6 +55,7 @@ public class Theatre {
 
         //Пробуем заменить в балете несуществующего актера
         ballet.replaceActor(actor1, "Козлов");
+        System.out.println("");
 
         //Выводим на экран либретто оперы и балета
         opera.printLibrettoText();

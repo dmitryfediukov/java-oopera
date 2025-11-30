@@ -1,6 +1,6 @@
 public class MusicalShow extends Show {
-    private Person musicAuthor; //автор музыки
-    private String librettoText; //текст либретто
+    protected Person musicAuthor; //автор музыки
+    protected String librettoText; //текст либретто
 
     //Конструктор
     public MusicalShow(String title, int duration, Director director, Person musicAuthor,
@@ -12,6 +12,6 @@ public class MusicalShow extends Show {
 
     //Метод вывода на экран текста либретто музыкального спектакля
     public void printLibrettoText() {
-        System.out.println("Либретто спектакля '" + getTitle() + "': " + librettoText);
+        System.out.println(librettoText);
     }
 }

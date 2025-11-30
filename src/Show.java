@@ -18,13 +18,13 @@ public class Show {
     public void printListOfActors() {
         System.out.println("Список актеров '" + getTitle() + "':");
         for (Actor actor : listOfActors) {
-            System.out.println(actor.toString());
+            System.out.println(actor);
         }
     }
 
     //Метод вывода режиссера. Для метода переопределял метод toString в классе Person
     public void printDirector() {
-        System.out.println(director.toString());
+        System.out.println(director);
     }
 
     /*Метод добавления нового актера в спектакль.
@@ -54,13 +54,31 @@ public class Show {
     Кажется, что по фамилии заменять не лучшая идея, так как могут быть 2 разных актера с одинаковой фамилией, но
     реализовал согласно заданию*/
     public void replaceActor(Actor newActor, String surnameToReplace) {
+        int counter = 0;
+        ArrayList<Actor> sameSurnameActors = new ArrayList<>();
+
+        //Перебираем всех актером в спектакле, записываем в список всех, чья фамилия равна указанной.
         for (Actor actor : listOfActors) {
             if (actor.getSurname().equals(surnameToReplace)) {
-                listOfActors.remove(actor);
-                listOfActors.add(newActor);
-                return;
+                sameSurnameActors.add(actor);
             }
         }
+
+        /* Если в списке актеров с одинаковой фамилией 1 актер, то производим замену.
+        Если в списке больше 1 актера, то выкидываем сообщение, что приложение пока не умеет производить замену при
+        таком кейсе.
+        Если актера не нашли, то замену тоже не производим. */
+        if (sameSurnameActors.size() == 1) {
+            listOfActors.remove(sameSurnameActors.getFirst());
+            listOfActors.add(newActor);
+            System.out.println("Замена актера произошла успешно.");
+            return;
+        } else if (sameSurnameActors.size() > 1) {
+            System.out.println("В спектакле больше 1 актера с указанной фамилией. Приложение пока не умеет" +
+                    " производить замену актера при таком кейсе.");
+            return;
+        }
+
         System.out.println("Актер с фамилией " + surnameToReplace + " не найден.");
     }
 }

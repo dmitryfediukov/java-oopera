@@ -1,7 +1,7 @@
 public class Person {
-    private String name; //имя
-    private String surname; //фамилия
-    private Gender gender; //пол (используем enum Gender)
+    protected String name; //имя
+    protected String surname; //фамилия
+    protected Gender gender; //пол (используем enum Gender)
 
     //Конструктор
     public Person(String name, String surname, Gender gender) {
